@@ -1,24 +1,28 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { UserButton } from "@clerk/nextjs";
-import { Menu, Sparkles } from "lucide-react";
-import { Poppins } from "next/font/google";
-import Link from "next/link";
-import { ModeToggle } from "./mode-toggle";
-import { Button } from "./ui/button";
+import { Poppins } from 'next/font/google';
+import Link from 'next/link';
 
-const font = Poppins({ subsets: ["latin"], weight: "600" });
+import { UserButton } from '@clerk/nextjs';
+import { Sparkles } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
+
+import MobileSidebar from './mobile-sidebar';
+import { ModeToggle } from './mode-toggle';
+import { Button } from './ui/button';
+
+const font = Poppins({ subsets: ['latin'], weight: '600' });
 
 export default function Navbar() {
   return (
-    <div className="fixed w-full z-50 flex justify-between items-center py-2 px-4 border-b border-primary/10 bg-secondary">
+    <div className="fixed z-50 flex w-full items-center justify-between border-b border-primary/10 bg-secondary px-4 py-2 h-16">
       <div className="flex items-center">
-        <Menu className="block md:hidden" />
+        <MobileSidebar />
         <Link href="/">
           <h1
             className={cn(
-              "hidden md:block text-xl md:text-3xl font-bold text-primary",
+              'hidden text-xl font-bold text-primary md:block md:text-3xl',
               font.className
             )}
           >
@@ -27,9 +31,9 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="flex items-center gap-x-3">
-        <Button variant={"premium"} size="sm">
+        <Button variant={'premium'} size="sm">
           Upgrade
-          <Sparkles className="w-4 h-4 ml-2 fill-white text-white" />
+          <Sparkles className="ml-2 h-4 w-4 fill-white text-white" />
         </Button>
         <ModeToggle />
         <UserButton afterSignOutUrl="/" />
