@@ -17,7 +17,7 @@ export default function SearchInput() {
   const name = searchParams.get('name');
 
   const [value, setValue] = useState(name || '');
-  const debouncedValue = useDebounce<string>(value, 500);
+  const debouncedValue = useDebounce<string>(value);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
