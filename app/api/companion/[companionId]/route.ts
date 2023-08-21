@@ -35,7 +35,8 @@ export async function PATCH(
 
     const companion = await prisma.companion.update({
       where: {
-        id: params.companionId
+        id: params.companionId,
+        userId: user.id
       },
       data: {
         src,
