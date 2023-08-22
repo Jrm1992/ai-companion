@@ -19,21 +19,24 @@ export interface ChatMessageProps {
   src?: string;
 }
 
-export default function ChatMessage({
+export const ChatMessage = ({
   role,
   content,
   isLoading,
   src
-}: ChatMessageProps) {
+}: ChatMessageProps) => {
   const { toast } = useToast();
   const { theme } = useTheme();
 
   const onCopy = () => {
-    if (!content) return;
+    if (!content) {
+      return;
+    }
 
     navigator.clipboard.writeText(content);
     toast({
-      description: 'Message copied.'
+      description: 'Message copied to clipboard.',
+      duration: 3000
     });
   };
 
@@ -47,7 +50,7 @@ export default function ChatMessage({
       {role !== 'user' && src && <BotAvatar src={src} />}
       <div className="max-w-sm rounded-md bg-primary/10 px-4 py-2 text-sm">
         {isLoading ? (
-          <BeatLoader color={theme === 'dark' ? '#000' : '#fff'} size={5} />
+          <BeatLoader color={theme === 'light' ? 'black' : 'white'} size={5} />
         ) : (
           content
         )}
@@ -65,4 +68,4 @@ export default function ChatMessage({
       )}
     </div>
   );
-}
+};

@@ -4,13 +4,16 @@ import { ElementRef, useEffect, useRef, useState } from 'react';
 
 import { Companion } from '@prisma/client';
 
-import ChatMessage, { ChatMessageProps } from './chat-message';
+import { ChatMessage, ChatMessageProps } from './chat-message';
 
 interface ChatMessagesProps {
   messages: ChatMessageProps[];
   isLoading: boolean;
   companion: Companion;
 }
+
+const demoMessage = `and this is an example of this app, if you want the complete source code, please visit https://github.com/Jrm1992/ai-companion and provide your own .env file with your data.`;
+
 export default function ChatMessages({
   messages = [],
   isLoading,
@@ -41,7 +44,7 @@ export default function ChatMessages({
       <ChatMessage
         src={companion.src}
         role="system"
-        content={`Hello, I am ${companion.name}.`}
+        content={`Hello, I am ${companion.name} ${demoMessage}`}
         isLoading={fakeLoading}
       />
       {messages.map((message) => (
