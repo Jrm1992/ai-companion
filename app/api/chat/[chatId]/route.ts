@@ -56,7 +56,7 @@ export async function POST(
     const companionKey = {
       companionName: name!,
       userId: user.id,
-      modelName: 'ggml-gpt4all-j'
+      modelName: 'vicuna-13b'
     };
     const memoryManager = await MemoryManager.getInstance();
 
@@ -85,6 +85,7 @@ export async function POST(
       relevantHistory = similarDocs.map((doc) => doc.pageContent).join('\n');
     }
     const { handlers } = LangChainStream();
+
     // Call Replicate for inference
     const model = new Replicate({
       model:
@@ -103,7 +104,9 @@ export async function POST(
       await model
         .call(
           `
-        ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix. 
+        ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix.
+        
+        ONLY generate one sentence.
 
         ${companion.instructions}
 

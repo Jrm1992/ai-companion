@@ -29,6 +29,7 @@ export default function ChatClient({ companion }: ChatClientProps) {
   const { input, isLoading, handleInputChange, handleSubmit, setInput } =
     useCompletion({
       api: `/api/chat/${companion.id}`,
+      body: { stream: true },
       onFinish(prompt, completion) {
         const systemMessage: ChatMessageProps = {
           role: 'system',
