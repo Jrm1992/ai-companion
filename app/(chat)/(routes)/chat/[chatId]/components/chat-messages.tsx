@@ -4,7 +4,7 @@ import { ElementRef, useEffect, useRef, useState } from 'react';
 
 import { Companion } from '@prisma/client';
 
-import ChatMessage, { ChatMessageProps } from './chat-message';
+import { ChatMessage, ChatMessageProps } from './chat-message';
 
 interface ChatMessagesProps {
   messages: ChatMessageProps[];
@@ -41,7 +41,7 @@ export default function ChatMessages({
       <ChatMessage
         src={companion.src}
         role="system"
-        content={`Hello, I am ${companion.name}.`}
+        content={`Hello, I am ${companion.name}`}
         isLoading={fakeLoading}
       />
       {messages.map((message) => (
@@ -49,7 +49,7 @@ export default function ChatMessages({
           key={message.content}
           role={message.role}
           content={message.content}
-          src={message.src}
+          src={companion.src}
         />
       ))}
       {isLoading && <ChatMessage role="system" src={companion.src} isLoading />}

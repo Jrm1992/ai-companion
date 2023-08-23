@@ -23,7 +23,7 @@ export class MemoryManager {
     if (this.vectorDBClient instanceof PineconeClient) {
       await this.vectorDBClient.init({
         apiKey: process.env.PINECONE_API_KEY!,
-        environment: process.env.PINECONE_ENVIRONMENT!
+        environment: process.env.PINECONE_ENVIROMENT!
       });
     }
   }
@@ -39,7 +39,9 @@ export class MemoryManager {
     );
 
     const vectorStore = await PineconeStore.fromExistingIndex(
-      new OpenAIEmbeddings({ openAIApiKey: process.env.OPENAI_API_KEY }),
+      new OpenAIEmbeddings({
+        openAIApiKey: process.env.OPENAI_API_KEY
+      }),
       { pineconeIndex }
     );
 
