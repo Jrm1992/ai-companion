@@ -1,7 +1,7 @@
 # SaaS AI Platform with Next.js 13, React, Tailwind, Prisma, MySQL, OpenAI
 
 <p align="center">
-  <img src=".github/img/preview.png">
+  <img src=".github/img/cover.png">
   <br />
 </p>
 
