@@ -11,9 +11,6 @@ interface ChatMessagesProps {
   isLoading: boolean;
   companion: Companion;
 }
-
-const demoMessage = `and this is an example of this app, if you want the complete source code, please visit https://github.com/Jrm1992/ai-companion and provide your own .env file with your data.`;
-
 export default function ChatMessages({
   messages = [],
   isLoading,
@@ -44,7 +41,7 @@ export default function ChatMessages({
       <ChatMessage
         src={companion.src}
         role="system"
-        content={`Hello, I am ${companion.name} ${demoMessage}`}
+        content={`Hello, I am ${companion.name}`}
         isLoading={fakeLoading}
       />
       {messages.map((message) => (
