@@ -31,7 +31,7 @@ export default function Categories({ data }: CategoriesProps) {
   };
 
   return (
-    <div className="flex w-full space-x-2 overflow-x-auto p-1">
+    <div className="flex w-full space-x-2 overflow-x-auto px-1 py-3">
       <button
         onClick={() => onClick(undefined)}
         className={cn(

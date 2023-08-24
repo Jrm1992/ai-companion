@@ -3,16 +3,18 @@
 import { Poppins } from 'next/font/google';
 import Link from 'next/link';
 
-import { UserButton } from '@clerk/nextjs';
+import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
 
 import { cn } from '@/lib/utils';
 
 import MobileSidebar from './mobile-sidebar';
 import { ModeToggle } from './mode-toggle';
+import { Button } from './ui/button';
 
 const font = Poppins({ subsets: ['latin'], weight: '600' });
 
 export default function Navbar() {
+  const { user } = useUser();
   return (
     <div className="fixed z-50 flex h-16 w-full items-center justify-between border-b border-primary/10 bg-secondary px-4 py-2">
       <div className="flex items-center">
@@ -30,7 +32,13 @@ export default function Navbar() {
       </div>
       <div className="flex items-center gap-x-3">
         <ModeToggle />
-        <UserButton afterSignOutUrl="/" />
+        {user ? (
+          <UserButton afterSignOutUrl="/" />
+        ) : (
+          <Button>
+            <SignInButton>Sign in</SignInButton>
+          </Button>
+        )}
       </div>
     </div>
   );
