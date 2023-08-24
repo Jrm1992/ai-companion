@@ -27,7 +27,10 @@ export default function Companions({ data }: CompanionProps) {
           key={companion.id}
           className="rouded-xl cursor-pointer border-0 bg-primary/10 transition hover:opacity-75"
         >
-          <Link href={`/chat/${companion.id}`}>
+          <Link
+            href={`/chat/${companion.id}`}
+            className="flex h-full flex-col justify-between"
+          >
             <CardHeader className="flex items-center justify-center text-center text-muted-foreground">
               <div className="relative h-32 w-32">
                 <Image
